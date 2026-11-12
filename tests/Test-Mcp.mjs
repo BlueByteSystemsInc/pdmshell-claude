@@ -2,8 +2,8 @@
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
-const launcher = fileURLToPath(new URL('../plugins/pdmshell/scripts/Start-PDMShellMcp.ps1', import.meta.url));
-const child = spawn('powershell.exe', ['-NoLogo', '-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass', '-File', launcher], { windowsHide: true });
+const launcher = fileURLToPath(new URL('../plugins/pdmshell/scripts/start-mcp.mjs', import.meta.url));
+const child = spawn(process.execPath, [launcher], { windowsHide: true });
 let buffer = '', finished = false;
 const timer = setTimeout(() => { console.error('MCP handshake timed out'); child.kill(); process.exitCode = 1; }, 20000);
 const send = message => child.stdin.write(JSON.stringify(message) + '\n');

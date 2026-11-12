@@ -16,7 +16,12 @@ $manifest = Get-Content (Join-Path $plugin '.claude-plugin/plugin.json') -Raw | 
 $mcp = Get-Content (Join-Path $plugin '.mcp.json') -Raw | ConvertFrom-Json
 Assert ($market.name -eq 'bluebyte' -and $manifest.name -eq 'pdmshell') 'Install ID changed.'
 Assert ((Resolve-Path (Join-Path $root $market.plugins[0].source)).Path -eq (Resolve-Path $plugin).Path) 'Marketplace path is invalid.'
-Assert ($mcp.mcpServers.pdmshell.args[-1] -eq '${CLAUDE_PLUGIN_ROOT}/scripts/Start-PDMShellMcp.ps1') 'MCP launcher path is invalid.'
+Assert ($mcp.mcpServers.pdmshell.command -eq 'node') 'MCP must use the supported Node launcher.'
+Assert ($mcp.mcpServers.pdmshell.args[-1] -eq '${CLAUDE_PLUGIN_ROOT}/scripts/start-mcp.mjs') 'MCP launcher path is invalid.'
+Assert (Test-Path (Join-Path $plugin 'LICENSE')) 'Plugin license is missing.'
+Add-Type -AssemblyName System.Drawing
+$icon = [Drawing.Image]::FromFile((Join-Path $plugin '.claude-plugin/icon.png'))
+try { Assert ($icon.Width -eq $icon.Height -and $icon.Width -ge 512 -and $icon.Width -le 2048) 'Invalid listing icon size.' } finally { $icon.Dispose() }
 foreach ($file in Get-ChildItem $root -Recurse -Filter *.ps1) {
     $tokens = $null; $errors = $null
     [void][Management.Automation.Language.Parser]::ParseFile($file.FullName, [ref]$tokens, [ref]$errors)

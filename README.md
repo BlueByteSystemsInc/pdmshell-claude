@@ -14,7 +14,7 @@ In Claude Code:
 
 Setup checks for PDMShell. If missing, it asks before downloading and opening the official signed installer. Complete that window, then reconnect PDMShell with `/mcp` or restart Claude Code. The plugin never installs software just because its MCP server starts.
 
-You need native Windows, the SOLIDWORKS PDM client and a local vault view. PDMShell licensing applies; ask Claude to check the license status. The PDM client is not installed by this plugin. Installing the shared vault add-in is optional and is not required for the MCP connection.
+You need native Windows, Node.js on PATH, the SOLIDWORKS PDM client and a local vault view. PDMShell licensing applies; ask Claude to check the license status. The PDM client is not installed by this plugin. Installing the shared vault add-in is optional and is not required for the MCP connection.
 
 Then ask, for example:
 

@@ -1,6 +1,6 @@
 {
   "name": "pdmshell",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Find files, inspect metadata, and automate SOLIDWORKS PDM using PDMShell on Windows.",
   "author": { "name": "Blue Byte Systems Inc", "url": "https://bluebyte.biz" },
   "homepage": "https://pdmshell.com/src/mcp-server.html",
