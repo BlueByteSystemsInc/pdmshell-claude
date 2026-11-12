@@ -1,0 +1,12 @@
+name: Validate plugin
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test manifests and setup helpers
+        shell: powershell
+        run: ./tests/Test-Plugin.ps1

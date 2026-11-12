@@ -1,0 +1,11 @@
+{
+  "name": "bluebyte",
+  "owner": { "name": "Blue Byte Systems Inc", "url": "https://bluebyte.biz" },
+  "plugins": [
+    {
+      "name": "pdmshell",
+      "source": "./plugins/pdmshell",
+      "description": "Work with SOLIDWORKS PDM through the locally installed PDMShell MCP server."
+    }
+  ]
+}
